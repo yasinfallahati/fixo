@@ -1,101 +1,60 @@
-<div align="center">
-
-<img src="./docs/assets/banner.svg" alt="Fixo" width="100%" />
-
-</div>
+<p align="center"><img src="docs/assets/hero.png" width="100%" alt="Fixo"></p>
 
 # Fixo
-
-**EN:** Local AI desk for Android phone repair shops · **FA:** میزکار هوش‌مصنوعی برای مغازه‌های تعمیرات اندروید
+### The local AI desk for Android repair counters
 
 <p align="center">
-  <a href="#english">English</a> ·
-  <a href="#persian--فارسی">فارسی</a>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
+<img src="https://img.shields.io/badge/ADB-3DDC84?style=for-the-badge&logo=android&logoColor=white">
+<img src="https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white">
 </p>
 
----
+<p align="center">
+<img src="docs/assets/hero.png" width="48%">
+<img src="docs/assets/features.png" width="48%">
+</p>
+<p align="center">
+<img src="docs/assets/bench.webp" width="48%">
+<img src="docs/assets/bench-tools.webp" width="48%">
+</p>
 
-<a id="english"></a>
+Plug a phone over USB. Fixo talks ADB so the shop can flip Wi‑Fi, push Play installs, provision Pasargad VPN (`phone@id`), assist Gmail signup, run category diagnostics, and back up media/contacts to `Desktop/Fixo-Backups` — with chat + mic for hands-free steps. Themes: Galaxy · Emerald · Ice. Persian-first, English locale ready.
 
-## English
-
-### What is Fixo?
-
-**Fixo** is a local desktop agent for Android repair counters. Connect a phone over USB (ADB), then manage shop Wi‑Fi, install apps from Play, provision Pasargad VPN (`phone@id`), assist Gmail signup, run phone diagnostics, and back up photos / videos / contacts — with Persian-first UI and English locale support.
-
-### Highlights
-
-| Area | What you get |
-|------|----------------|
-| **Shop network** | Toggle Wi‑Fi, connect/forget shop SSID, mobile-data gate before Play install |
-| **Apps** | One-tap Play install grid + manual sources (model search, APK, GitHub, URL) |
-| **VPN** | Pasargad lookup / create / renew / delete · sequential suggested shop id |
-| **Gmail** | Assisted signup flow on the connected phone |
-| **Phone settings** | Category diagnostics: detect / fix / technician guides |
-| **Backup** | Media + contacts to `Desktop/Fixo-Backups` with pause / resume / cancel |
-| **Agent** | Chat + voice mic for hands-free repair commands |
-| **Themes** | Galaxy · Emerald · Ice |
-
-### Stack
-
-```
-apps/desktop          Express API + Vite React UI + local agent
-packages/mcp-network  ADB network / Wi-Fi / mobile data
-packages/mcp-apps     Play install, backup, Pasargad, Gmail, phone settings
-packages/shared       Shared Zod schemas
-```
-
-Node.js 22+ · pnpm · ADB · TypeScript · React · Vite
-
-### Quick start
+## Monorepo start
 
 ```bash
-git clone https://github.com/yasinfallahati/fixo.git
-cd fixo
 pnpm install
-cp .env.example .env   # fill keys
-pnpm --filter @fixo/desktop build
-pnpm --filter @fixo/desktop start
+pnpm dev          # desktop + helpers
+pnpm build && pnpm test && pnpm typecheck
 ```
 
-Open **http://127.0.0.1:8787**
+Packages under `apps/desktop` + `packages/*`. Agent/MCP network helpers via `pnpm dev:mcp`.
+
+| Bench job | Fixo action |
+|-----------|-------------|
+| Shop Wi‑Fi | Connect / forget / mobile-data gate |
+| Apps | Play grid + APK / GitHub / URL |
+| VPN | Lookup · create · renew · delete |
+| Backup | Pause / resume / cancel |
 
 ---
 
-<a id="persian--فارسی"></a>
+## فارسی — فیکسو
 
-## فارسی
+**میزکار هوش‌مصنوعی برای تعمیرگاه موبایل اندروید.** گوشی را با USB وصل کنید؛ فیکسو از ADB برای وای‌فای فروشگاه، نصب اپ، VPN پاسارگاد، کمک ساخت جیمیل، عیب‌یابی دسته‌بندی‌شده و بکاپ عکس/ویدیو/مخاطب استفاده می‌کند. چت و میکروفون برای دستورات بدون دست؛ سه تم بصری.
 
-### فیکسو چیست؟
-
-**فیکسو** یک ایجنت دسکتاپ محلی برای پیشخوان تعمیرات اندروید است. گوشی را با USB (ADB) وصل کنید؛ بعد Wi‑Fi مغازه، نصب از Play، VPN پاسارگاد، کمک ثبت Gmail، عیب‌یابی گوشی و بکاپ عکس/ویدیو/مخاطب را مدیریت کنید — با رابط فارسی‌محور و پشتیبانی انگلیسی.
-
-### امکانات اصلی
-
-| حوزه | چه می‌گیرید |
-|------|-------------|
-| **شبکه مغازه** | روشن/خاموش Wi‑Fi، اتصال/فراموشی SSID، گیت اینترنت موبایل قبل از نصب Play |
-| **اپ‌ها** | شبکه نصب Play + منابع دستی (جستجوی مدل، APK، GitHub، URL) |
-| **VPN** | جستجو/ساخت/تمدید/حذف پاسارگاد |
-| **Gmail** | جریان کمکی ثبت‌نام روی گوشی متصل |
-| **تنظیمات گوشی** | تشخیص / رفع / راهنمای تکنسین |
-| **بکاپ** | رسانه و مخاطبین با pause / resume / cancel |
-| **ایجنت** | چت + میکروفون صوتی |
-| **تم‌ها** | Galaxy · Emerald · Ice |
-
-### شروع سریع
+### اجرا
 
 ```bash
-git clone https://github.com/yasinfallahati/fixo.git
-cd fixo
-pnpm install
-cp .env.example .env
-pnpm --filter @fixo/desktop build
-pnpm --filter @fixo/desktop start
+pnpm install && pnpm dev
 ```
 
-آدرس: **http://127.0.0.1:8787**
+### ارزش برای پیشخوان
 
----
+- کمتر جابه‌جایی بین ابزارهای پراکنده  
+- UI فارسی برای تکنسین  
+- داده و بکاپ روی همان سیستم فروشگاه می‌ماند  
 
-`#android` `#adb` `#typescript` `#react` `#repair` `#local-ai` `#persian` `#vite` `#nodejs`
+نسخه فعلی: `1.0.3` در `package.json`.
